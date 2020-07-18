@@ -1,0 +1,31 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void intersection(int a[][2], int n){
+	int l1 = a[0][0], r1 = a[0][1], i=1, l2, r2;
+	for(i;i<n;i++){
+		l2 = a[i][0]; 
+		r2 = a[i][1];
+		if(l1>r2 || 12<r1)return;
+		else 
+		{
+			l1=max(l1,l2);
+			l2=max(r1,r2);
+		}
+	}
+	cout<<l1<<" "<<r1;
+	return;
+}
+
+int main() {
+	int intervals[][2] = { 
+        { 1, 6 }, 
+        { 2, 8 }, 
+        { 3, 10 }, 
+        { 5, 8 } 
+    }; 
+    int N = sizeof(intervals) / sizeof(intervals[0]); 
+    intersection(intervals, N);
+	return 0;
+}
