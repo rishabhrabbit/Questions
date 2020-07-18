@@ -1,0 +1,27 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+bool isCyclic(int a[], int n){
+	map<int,int> Visited={};
+	int i=0,t=n;
+	while(t--){
+		if(Visited[i]>0)return true;
+		Visited[i]++;
+		i=1+a[i]%2;
+	}
+	return 0;
+}
+
+
+int main() {
+	int n;
+	cin>>n;
+	int *a = new int[n];
+	for (int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	cout<<isCyclic(a,n);
+	
+	return 0;
+}
