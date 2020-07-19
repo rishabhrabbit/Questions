@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+void swap(int *a, int *b){
+	int temp;
+	temp=*a;
+	*a=*b;
+	*b=temp;
+	return;
+}
+
+int shift(int a[], int n){
+	int i,j=0;
+	for(i=0;i<n;i++){
+		if(a[i]<=0){
+			swap(&a[i],&a[j]);
+			j++;
+		}
+	}
+	return j;
+}
+int findMissingUti(int a[], int n){
+	int i;
+	for(i=0;i<n;i++){
+		if(abs(a[i]-1)<n && a[abs(a[i])-1]>0){
+			a[abs(a[i])-1]*=-1;
+		}
+	}
+	for(i=0;i<n;i++){
+		if(a[i]>0)return i+1;
+	}
+	return n+1;
+}
+
+int findMissing(int a[], int n){
+	int t=shift(a,n);
+	return findMissingUti(a+t, n-t);
+}
+
+
+int main() {
+	int arr[] = { 1000,0, 10, 2, -10, -20, 1, 3, 6, 4, 7 ,5, 500}; 
+    int arr_size = sizeof(arr) / sizeof(arr[0]); 
+    int missing = findMissing(arr, arr_size); 
+    cout << "The smallest positive missing number is " << missing; 
+    return 0;
+}
