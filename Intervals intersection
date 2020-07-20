@@ -11,7 +11,7 @@ void intersection(int a[][2], int n){
 		else 
 		{
 			l1=max(l1,l2);
-			l2=max(r1,r2);
+			r1=max(r1,r2);
 		}
 	}
 	cout<<l1<<" "<<r1;
