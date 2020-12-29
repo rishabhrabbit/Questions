@@ -15,13 +15,6 @@ class Node{
 
 };
 
-/*Node *newNode (int data){
-	Node *node = new Node();
-	node->data=data;
-	node->left=node->right=NULL;
-	return node;
-}*/
-
 void takeInput(Node* &node) {
     bool l;
     int data;
@@ -46,7 +39,7 @@ Node * InputBT(){
 }
 
 int main() {
-	Node *root = InputBT();//cout<<"*"<<endl;
+	Node *root = InputBT();
 	print(root);
 	return 0;
 }
