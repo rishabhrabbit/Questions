@@ -1,0 +1,61 @@
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+// Maximum number of digits in output
+#define MAX 500
+ 
+int multiply(int x, int a[], int n);
+ 
+// This function finds factorial of large numbers
+// and prints them
+string factorial(int t)
+{
+	string s="";
+    int a[500];
+    // Initialize result
+    a[0] = 1;
+    int n = 1;
+    for (int i=2; i<=t; i++)n = multiply(i, a, n);// Apply simple factorial formula n! = 1 * 2 * 3 * 4...*
+    cout << "Factorial of given number is \n";
+    for (int i=n-1; i>=0; i--)
+    {
+    	s+=to_string(a[i]);//cout << a[i]<<" ";
+	}	   
+	return s;
+}
+ 
+// This function multiplies x with the number
+// represented by res[].
+// res_size is size of res[] or number of digits in the
+// number represented by res[]. This function uses simple
+// school mathematics for multiplication.
+// This function may value of res_size and returns the
+// new value of res_size
+int multiply(int x, int a[], int n)
+{
+    int c = 0;  // Initialize carry
+    for (int i=0; i<n; i++)// One by one multiply n with individual digits of res[]
+    {
+        int p = a[i] * x + c;
+        a[i] = p % 10; // Store last digit of 'prod' in res[] 
+        c  = p/10;   // Put rest in carry
+    }
+    while (c)    // Put carry in res and increase result size
+    {
+        a[n] = c%10;
+        c = c/10;
+        n++;
+    }
+    return n;
+}
+ 
+// Driver program
+int main()
+{
+	int n;
+	cin>>n;
+	string s = factorial(n);
+	cout<<s;
+    return 0;
+}
