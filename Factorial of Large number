@@ -4,28 +4,7 @@ using namespace std;
  
 // Maximum number of digits in output
 #define MAX 500
- 
-int multiply(int x, int a[], int n);
- 
-// This function finds factorial of large numbers
-// and prints them
-string factorial(int t)
-{
-	string s="";
-    int a[500];
-    // Initialize result
-    a[0] = 1;
-    int n = 1;
-    for (int i=2; i<=t; i++)n = multiply(i, a, n);// Apply simple factorial formula n! = 1 * 2 * 3 * 4...*
-    cout << "Factorial of given number is \n";
-    for (int i=n-1; i>=0; i--)
-    {
-    	s+=to_string(a[i]);//cout << a[i]<<" ";
-	}	   
-	return s;
-}
- 
-// This function multiplies x with the number
+ // This function multiplies x with the number
 // represented by res[].
 // res_size is size of res[] or number of digits in the
 // number represented by res[]. This function uses simple
@@ -50,6 +29,25 @@ int multiply(int x, int a[], int n)
     return n;
 }
  
+// This function finds factorial of large numbers
+// and prints them
+string factorial(int t)
+{
+	string s="";
+    int a[500];
+    // Initialize result
+    a[0] = 1;
+    int n = 1;
+    for (int i=2; i<=t; i++)n = multiply(i, a, n);// Apply simple factorial formula n! = 1 * 2 * 3 * 4...*
+    cout << "Factorial of given number is \n";
+    for (int i=n-1; i>=0; i--)
+    {
+    	s+=to_string(a[i]);//cout << a[i]<<" ";
+	}	   
+	return s;
+}
+ 
+
 // Driver program
 int main()
 {
