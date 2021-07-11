@@ -1,0 +1,36 @@
+int Solution::repeatedNumber(const vector<int> &A) 
+{
+    /*
+    int n=A.size(),ans=-1;
+    for(int i=0;i<18;i++)
+    {
+        int t=A[rand()%n], c=0;
+        for(int i=0;i<n;i++)if(A[i]==t)c++;
+        if(c>n/3){ans=t;break;}
+    }
+    return ans;
+    
+    */
+    
+    int x = INT_MAX, y = INT_MAX, a = 0, b = 0, ans=-1;
+    for(int i=0;i<A.size();i++){
+        if(A[i] == x)a++;
+        else if(A[i] == y)b++;
+        else if(a == 0){
+            a++;
+            x = A[i];
+        }
+        else if(b == 0){
+            b++;
+            y = A[i];
+        }
+        else{a--;b--;}
+    }
+    a = 0, b = 0;
+    for(int i=0;i<A.size();i++){
+        if(A[i] == x)a++;
+        else if(A[i] == y)b++;
+    }
+    if(max(a,b) > A.size()/3)(a>b)?ans=x:ans=y;
+    return ans;
+}
