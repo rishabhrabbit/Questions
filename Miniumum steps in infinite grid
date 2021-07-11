@@ -1,0 +1,9 @@
+int Solution::coverPoints(vector<int> &X, vector<int> &Y) 
+{
+    int sum=0;
+    for(int i=0;i<X.size()-1;i++)
+    {
+        sum+=max(abs(X[i]-X[i+1]),abs(Y[i]-Y[i+1]));
+    }
+    return sum;
+}
