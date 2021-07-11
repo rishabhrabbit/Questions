@@ -1,0 +1,36 @@
+int Solution::solve(vector<int> &A) {
+    int n= A.size();
+    if(n<3)
+    return 0;
+    int mx=0, ans=0;
+    for(int i=n-1;i>1;i--)
+    {
+        if(A[i]<mx)continue;
+        int x=-1,y=-1;
+        for(int j=i-1; j>=0; j--){
+            if(A[j]<A[i]){
+                if(A[j]>x){
+                    y=-1;
+                    x=A[j];
+                }
+                else if(A[j]>y && A[j]<x)y=A[j];
+            }
+            if(x!=-1&&y!=-1)ans=max(ans,A[i]+x+y);
+        }
+        mx = max(mx,A[i]);
+    }
+    return ans;
+    /*int n=A.size(), ans=0;
+    for(int i=1;i<n-1;i++)
+    {
+        int max1=0, max2=0;
+        for(int j=0;j<i;j++){
+            if(A[j]<A[i])max1=max(A[j],max1);
+        }
+        for(int j=i+1;j<n;j++){
+            if(A[j]>A[i])max2=max(A[j],max2);
+        }
+        if(max1&&max2)ans=max(ans,A[i]+max1+max2);
+    }
+    return ans;*/
+}
