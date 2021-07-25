@@ -1,0 +1,12 @@
+string rx(string s){
+	if(s.length()==0)return s;
+	string s1="";
+	if(s[0]!='x')s1+=s[0];
+	return s1+rx(s.substr(1));
+}
+ 
+int main() {
+	string s="abcedxxxid j";
+	cout<<rx(s);
+	return 0;
+}
