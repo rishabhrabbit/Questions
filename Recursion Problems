@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+void towerOfHanoi(int n, char from_rod,
+                    char to_rod, char aux_rod)
+{
+    if (n == 1)
+    {
+        cout << "Move disk 1 from rod " << from_rod <<
+                            " to rod " << to_rod<<endl;
+        return;
+    }
+    towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
+    cout << "Move disk " << n << " from rod " << from_rod <<
+                                " to rod " << to_rod << endl;
+    towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
+}
+ 
+void toi(int n, char a, char b, char c){
+	if(n>=1){
+		toi(n-1, a,c,b);
+		cout<<n<<a<<c<<endl;
+		toi(n-1, b,a,c);
+	}
+}
+void toi1(int n, char a, char c, char b){
+	if(n>=1){
+		toi1(n-1, a,b,c);
+		cout<<n<<a<<c<<endl;
+		toi1(n-1, b,c,a);
+	}
+}
+int fact(int n){
+	if(n>0)return n*fact(n-1);
+	else return 1;
+}
+int fib(int n){
+	if((n==1)||(n==2))return 1;
+	return fib(n-1)+fib(n-2);
+ 
+}
+int GCD(int a, int b){
+	if(a%b==0)return b;
+	if(b%a==0)return a;
+	if(a>b)return GCD(a%b, b);
+	else if(a<b)return GCD(a,b%a);
+ 
+}
+ 
+void permutations(string s, int l, int r){
+	if(l==r)cout<<s<<endl;
+	else{
+		for(int i=l;i<=r;i++){
+			swap(s[i],s[l]);
+			permutations(s,l+1,r);
+			swap(s[i],s[l]);
+		}
+	}
+}
+void allBinary(int n, int a[], int i){
+	if(i==n){
+		for(int j=0;j<n;j++)cout<<a[j]<<" ";cout<<endl;
+		return;
+	}
+	a[i]=0;
+	allBinary(n,a,i+1);
+	a[i]=1;
+	allBinary(n,a,i+1);
+}
+ 
+// Driver code
+int main()
+{
+    int n = 4;
+    int a[4]; // Number of disks
+    // towerOfHanoi(n, 'A', 'C', 'B'); // A, B and C are names of rods
+    // toi(n,'A','B','C');cout<<endl;
+    // toi1(n, 'A', 'C', 'B'); // A, B and C are names of rods
+    // return 0;
+    //cout<<fact(n);
+	//cout<<fib(n);
+	//cout<<GCD(105,91);
+	//string s="ABC";
+	//permutations(s,0,s.length()-1);
+	allBinary(n,a,0);
+}
